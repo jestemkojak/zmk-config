@@ -1,4 +1,4 @@
-This is the zmk shield definition for the original Ergodox. It uses a [teensy2nicenano adaptor](https://github.com/tahnok/teensy2nicenano) PCB.
+This is the zmk shield definition for the original Ergodone. It uses a [teensy2nicenano adaptor](https://github.com/tahnok/teensy2nicenano) PCB.
 
 # Fork
 
@@ -6,4 +6,4 @@ This is not using mainline ZMK, instead it uses [kscan read by port](https://git
 
 # Keymap
 
-As of Feb 2023, the keymap is [miryoku](https://github.com/manna-harbour/miryoku_zmk) inspired, but sort of halfway between an ergodox and a corne. Specifically it still has shift keys, and numbers, but it does use home row mods.
+As of Feb 2023, the keymap is [miryoku](https://github.com/manna-harbour/miryoku_zmk) inspired, but sort of halfway between an ergodone and a corne. Specifically it still has shift keys, and numbers, but it does use home row mods.

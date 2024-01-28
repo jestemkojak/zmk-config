@@ -1,10 +1,10 @@
 # Copyright (c) 2023 The ZMK Contributors
 # SPDX-License-Identifier: MIT
 
-if SHIELD_ERGODOX
+if SHIELD_ERGODONE
 
 config ZMK_KEYBOARD_NAME
-    default "Ergodox"
+    default "Ergodone"
 
 config ZMK_USB
     default y
