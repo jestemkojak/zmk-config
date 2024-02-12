@@ -1,6 +1,6 @@
 file_format: "1"
 id: ergodone
-name: ErgodoneBT
+name: Ergodone
 type: shield
 url: https://github.com/ktec-hq/ErgoDone
 requires: [nice_nano_v2]
