@@ -4,7 +4,7 @@
 if SHIELD_ERGODONE
 
 config ZMK_KEYBOARD_NAME
-    default "Ergodone"
+    default "BLErgodone"
 
 config ZMK_USB
     default y
