@@ -18,11 +18,11 @@
 
 / {
     behaviors {
-        reboot: reboot {
+        grave_reboot: grave_reboot {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp GRAVE>, <&sys_reset>;
-            mods = <(MOD_LALT|MOD_LSFT|MOD_LCTL)>;
+            mods = <(MOD_LGUI)>;
         };
     };
 
@@ -34,10 +34,10 @@
             &kp ESC          &kp N1      &kp N2       &kp   N3     &kp    N4     &kp N5  &kp MINUS            &kp EQUAL &kp  N6 &kp N7  &kp N8  &kp N9 &kp N0 &kp MINUS
             &kp TAB          &kp Q       &kp W        &kp    E     &kp     R     &kp  T  &kp LEFT_BRACKET     &kp RIGHT_BRACKET &kp  Y  &kp U   &kp I   &kp O  &kp  P  &kp BACKSLASH
             &kp LCTRL        &kp A       &kp S        &kp    D     &kp     F     &kp  G                               &kp H &kp J &kp K &kp L &kp SEMI &kp APOSTROPHE
-            &mt LSHFT LEFT_PARENTHESIS    &kp Z        &kp  X    &kp  C  &kp  V  &kp  B  &kp LEFT_WIN               &kp DEL &kp N &kp M &kp COMMA &kp DOT &kp FSLH &mt RSHFT RIGHT_PARENTHESIS
-            &reboot       &kp LC(C)   &kp LEFT_ALT &kp LEFT_BRACE   &kp RIGHT_BRACE                                       &kp RIGHT_ALT &kp LC(V) &to BASE &mo MEDI &mo NUMB
-                                                    &kp INS  &kp K_MENU                                       &none &kp PRINTSCREEN
-                                            &kp SPACE &kp BACKSPACE  &kp HOME                                 &kp PAGE_UP &mo SYMB &kp ENTER
+            &mt LSHFT LPAR    &kp Z        &kp  X    &kp  C  &kp  V  &kp  B  &kp LEFT_WIN               &kp DEL &kp N &kp M &kp COMMA &kp DOT &kp FSLH &mt RSHFT RPAR
+            &grave_reboot       &kp LC(C)   &kp LALT &kp LBRC   &kp RBRC                                       &kp RALT &kp LC(V) &to BASE &mo MEDI &mo NUMB
+                                                    &kp INS  &kp K_MENU                                       &none &kp PSCRN
+                                            &kp SPACE &kp BSPC  &kp HOME                                 &kp PAGE_UP &mo SYMB &kp ENTER
                                                                     &kp END                                   &kp PAGE_DOWN
 			>;
         };
