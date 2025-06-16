@@ -32,6 +32,7 @@
 		label = "KSCAN_LEFT";
 
 		diode-direction = "col2row";
+		wakeup-source;
         poll-period-ms = <3>;
 		
 
