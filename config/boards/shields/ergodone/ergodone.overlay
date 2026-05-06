@@ -11,10 +11,111 @@
         zmk,matrix_transform = &default_transform;
     };
 
+  // Wakeup key nodes - one per row of the left half (col2row, rows are inputs).
+    // Must be children of gpio-keys so the gpios property gets the phandle-array
+    // binding needed for GPIO nexus (pro_micro) resolution.
+    wakeup_keys: wakeup_keys {
+        compatible = "gpio-keys";
+        wk_row0: wk_row0 { gpios = <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; };
+        wk_row1: wk_row1 { gpios = <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; };
+        wk_row2: wk_row2 { gpios = <&pro_micro 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; };
+        wk_row3: wk_row3 { gpios = <&pro_micro 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; };
+        wk_row4: wk_row4 { gpios = <&pro_micro 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; };
+        wk_row5: wk_row5 { gpios = <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; };
+    };
+
+    // Wakeup trigger nodes - RESUME configures GPIO SENSE on the row pin and drives
+    // all column pins HIGH, so any key press wakes from SYSTEM_OFF.
+    wk_trig0: wk_trig0 {
+        compatible = "zmk,gpio-key-wakeup-trigger";
+        trigger = <&wk_row0>;
+        wakeup-source;
+        extra-gpios
+            = <&pro_micro 8 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 7 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 6 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 5 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 4 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 0 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 1 GPIO_ACTIVE_HIGH>
+            ;
+    };
+    wk_trig1: wk_trig1 {
+        compatible = "zmk,gpio-key-wakeup-trigger";
+        trigger = <&wk_row1>;
+        wakeup-source;
+        extra-gpios
+            = <&pro_micro 8 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 7 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 6 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 5 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 4 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 0 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 1 GPIO_ACTIVE_HIGH>
+            ;
+    };
+    wk_trig2: wk_trig2 {
+        compatible = "zmk,gpio-key-wakeup-trigger";
+        trigger = <&wk_row2>;
+        wakeup-source;
+        extra-gpios
+            = <&pro_micro 8 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 7 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 6 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 5 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 4 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 0 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 1 GPIO_ACTIVE_HIGH>
+            ;
+    };
+    wk_trig3: wk_trig3 {
+        compatible = "zmk,gpio-key-wakeup-trigger";
+        trigger = <&wk_row3>;
+        wakeup-source;
+        extra-gpios
+            = <&pro_micro 8 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 7 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 6 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 5 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 4 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 0 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 1 GPIO_ACTIVE_HIGH>
+            ;
+    };
+    wk_trig4: wk_trig4 {
+        compatible = "zmk,gpio-key-wakeup-trigger";
+        trigger = <&wk_row4>;
+        wakeup-source;
+        extra-gpios
+            = <&pro_micro 8 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 7 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 6 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 5 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 4 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 0 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 1 GPIO_ACTIVE_HIGH>
+            ;
+    };
+    wk_trig5: wk_trig5 {
+        compatible = "zmk,gpio-key-wakeup-trigger";
+        trigger = <&wk_row5>;
+        wakeup-source;
+        extra-gpios
+            = <&pro_micro 8 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 7 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 6 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 5 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 4 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 0 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 1 GPIO_ACTIVE_HIGH>
+            ;
+    };
+
     soft_off_wakers: soft_off_wakers {
         compatible = "zmk,soft-off-wakeup-sources";
-        wakeup-sources = <&kscan_left>;
+        wakeup-sources = <&wk_trig0 &wk_trig1 &wk_trig2 &wk_trig3 &wk_trig4 &wk_trig5>;
     };
+
 
     kscan0: kscan {
         compatible = "zmk,kscan-composite";
